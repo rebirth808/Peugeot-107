@@ -1,4 +1,434 @@
-{ "commands": [
-
-]
+{
+  "commands": [
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "01"
+      },
+      "freq": 0.2,
+      "signals": [
+        {
+          "id": "MONITOR_STATUS_SINCE_DTC_CLEARED",
+          "path": "DTCs.Readiness",
+          "fmt": {
+            "bix": 0,
+            "len": 32,
+            "unit": "scalar",
+            "max": 4294967295
+          },
+          "name": "Monitor status since DTCs cleared",
+          "description": "[CONFIRMED_LIVE] Diagnostics readiness and DTC/MIL status. Useful as a baseline diagnostic status value. Confirmed live in the Peugeot 107 raw Pelican report with 4 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "03"
+      },
+      "freq": 0.2,
+      "signals": [
+        {
+          "id": "FUEL_SYSTEM_STATUS_1",
+          "path": "Fuel.Status",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "unit": "scalar",
+            "max": 255
+          },
+          "name": "Fuel system status 1",
+          "description": "[CONFIRMED_LIVE] Open/closed-loop fuel-system status. Useful to understand warm-up and fueling control state. Confirmed live in the Peugeot 107 raw Pelican report with 5 positive samples."
+        },
+        {
+          "id": "FUEL_SYSTEM_STATUS_2",
+          "path": "Fuel.Status",
+          "fmt": {
+            "bix": 8,
+            "len": 8,
+            "unit": "scalar",
+            "max": 255
+          },
+          "name": "Fuel system status 2",
+          "description": "[CONFIRMED_LIVE] Open/closed-loop fuel-system status. Useful to understand warm-up and fueling control state. Confirmed live in the Peugeot 107 raw Pelican report with 5 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "04"
+      },
+      "freq": 5,
+      "signals": [
+        {
+          "id": "ENGINE_LOAD",
+          "path": "Engine",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "div": 2.55,
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          },
+          "name": "Engine load",
+          "description": "[CONFIRMED_LIVE] Calculated engine load. Useful for load, throttle, and driveability monitoring. Confirmed live in the Peugeot 107 raw Pelican report with 1791 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "05"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "COOLANT_TEMP",
+          "path": "Engine.Cooling",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "add": -40,
+            "unit": "celsius",
+            "min": -40,
+            "max": 215
+          },
+          "name": "Coolant temperature",
+          "description": "[CONFIRMED_LIVE] Engine coolant temperature. Useful for warm-up, thermostat, fan, and overheating checks. Confirmed live in the Peugeot 107 raw Pelican report with 1790 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "06"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "STFT_B1",
+          "path": "Fuel.Trim",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "add": -100,
+            "div": 128,
+            "unit": "percent",
+            "min": -100,
+            "max": 99.21875,
+            "mul": 100
+          },
+          "name": "Short term fuel trim bank 1",
+          "description": "[CONFIRMED_LIVE] Short-term fuel correction for bank 1. Positive means the ECU is adding fuel; negative means it is removing fuel. Confirmed live in the Peugeot 107 raw Pelican report with 1786 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "07"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "LTFT_B1",
+          "path": "Fuel.Trim",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "add": -100,
+            "div": 128,
+            "unit": "percent",
+            "min": -100,
+            "max": 99.21875,
+            "mul": 100
+          },
+          "name": "Long term fuel trim bank 1",
+          "description": "[CONFIRMED_LIVE] Long-term fuel adaptation for bank 1. Useful for mixture adaptation, intake leaks, fuel pressure, and sensor ageing checks. Confirmed live in the Peugeot 107 raw Pelican report with 12 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "0B"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "MAP_PRESSURE",
+          "path": "Engine.Intake",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "unit": "kilopascal",
+            "min": 0,
+            "max": 255
+          },
+          "name": "Intake manifold pressure",
+          "description": "[CONFIRMED_LIVE] Intake manifold absolute pressure. Useful for load, vacuum checks, and throttle behavior. Confirmed live in the Peugeot 107 raw Pelican report with 16 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "0C"
+      },
+      "freq": 5,
+      "signals": [
+        {
+          "id": "ENGINE_RPM",
+          "path": "Engine",
+          "fmt": {
+            "bix": 0,
+            "len": 16,
+            "div": 4,
+            "unit": "rpm",
+            "min": 0,
+            "max": 8000
+          },
+          "name": "Engine RPM",
+          "description": "[CONFIRMED_LIVE] Engine speed. Core live data signal. Confirmed live in the Peugeot 107 raw Pelican report with 946 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "0D"
+      },
+      "freq": 5,
+      "signals": [
+        {
+          "id": "VEHICLE_SPEED",
+          "path": "Movement",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "unit": "kilometersPerHour",
+            "min": 0,
+            "max": 255
+          },
+          "name": "Vehicle speed",
+          "description": "[CONFIRMED_LIVE] Vehicle speed. Core live data signal. Confirmed live in the Peugeot 107 raw Pelican report with 1788 positive samples.",
+          "suggestedMetric": "speed"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "0E"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "TIMING_ADVANCE",
+          "path": "Engine.Ignition",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "add": -64,
+            "div": 2,
+            "unit": "degrees",
+            "min": -64,
+            "max": 63.5
+          },
+          "name": "Timing advance",
+          "description": "[CONFIRMED_LIVE] Ignition timing advance. Useful to understand spark strategy and knock-related timing behavior. Confirmed live in the Peugeot 107 raw Pelican report with 8 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "0F"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "INTAKE_AIR_TEMP",
+          "path": "Engine.Intake",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "add": -40,
+            "unit": "celsius",
+            "min": -40,
+            "max": 215
+          },
+          "name": "Intake air temperature",
+          "description": "[CONFIRMED_LIVE] Intake air temperature. Useful for intake heat, ambient comparison, and density-related diagnosis. Confirmed live in the Peugeot 107 raw Pelican report with 16 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "11"
+      },
+      "freq": 5,
+      "signals": [
+        {
+          "id": "THROTTLE_POS",
+          "path": "Engine.Throttle",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "div": 2.55,
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          },
+          "name": "Throttle position",
+          "description": "[CONFIRMED_LIVE] Absolute throttle position. Useful for pedal/throttle behavior and load correlation. Confirmed live in the Peugeot 107 raw Pelican report with 1793 positive samples."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "13"
+      },
+      "freq": 0.2,
+      "signals": [
+        {
+          "id": "O2_SENSORS_PRESENT",
+          "path": "Emissions.OxygenSensors",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "unit": "scalar",
+            "max": 255
+          },
+          "name": "O2 sensors present",
+          "description": "[CONFIRMED_LIVE] Oxygen sensor presence bitmap. Useful to describe available O2 sensor layout. Confirmed live in the Peugeot 107 raw Pelican report with 1 positive sample. Low sample count; keep under observation in future logs."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "14"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "O2_S1_VOLTAGE",
+          "path": "Emissions.OxygenSensors",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "div": 200,
+            "unit": "volts",
+            "min": 0,
+            "max": 1.275
+          },
+          "name": "O2 sensor 1 voltage upstream",
+          "description": "[CONFIRMED_LIVE] Upstream oxygen sensor data. Useful for closed-loop behavior and mixture diagnosis. Confirmed live in the Peugeot 107 raw Pelican report with 1 positive sample. Low sample count; keep under observation in future logs."
+        },
+        {
+          "id": "O2_S1_STFT",
+          "path": "Fuel.Trim",
+          "fmt": {
+            "bix": 8,
+            "len": 8,
+            "add": -100,
+            "div": 128,
+            "unit": "percent",
+            "min": -100,
+            "max": 99.21875,
+            "mul": 100
+          },
+          "name": "O2 sensor 1 short term trim",
+          "description": "[CONFIRMED_LIVE] Upstream oxygen sensor data. Useful for closed-loop behavior and mixture diagnosis. Confirmed live in the Peugeot 107 raw Pelican report with 1 positive sample. Low sample count; keep under observation in future logs."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "15"
+      },
+      "freq": 1,
+      "signals": [
+        {
+          "id": "O2_S2_VOLTAGE",
+          "path": "Emissions.OxygenSensors",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "div": 200,
+            "unit": "volts",
+            "min": 0,
+            "max": 1.275
+          },
+          "name": "O2 sensor 2 voltage downstream",
+          "description": "[CONFIRMED_LIVE] Downstream oxygen sensor data. Useful for catalyst/post-cat O2 observation where available. Confirmed live in the Peugeot 107 raw Pelican report with 1 positive sample. Low sample count; keep under observation in future logs."
+        },
+        {
+          "id": "O2_S2_STFT",
+          "path": "Fuel.Trim",
+          "fmt": {
+            "bix": 8,
+            "len": 8,
+            "add": -100,
+            "div": 128,
+            "unit": "percent",
+            "min": -100,
+            "max": 99.21875,
+            "mul": 100
+          },
+          "name": "O2 sensor 2 short term trim",
+          "description": "[CONFIRMED_LIVE] Downstream oxygen sensor data. Useful for catalyst/post-cat O2 observation where available. Confirmed live in the Peugeot 107 raw Pelican report with 1 positive sample. Low sample count; keep under observation in future logs."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "1C"
+      },
+      "freq": 0.2,
+      "signals": [
+        {
+          "id": "OBD_STANDARD",
+          "path": "OBD",
+          "fmt": {
+            "bix": 0,
+            "len": 8,
+            "unit": "scalar",
+            "max": 255
+          },
+          "name": "OBD standard",
+          "description": "[CONFIRMED_LIVE] OBD standard reported by the ECU. Useful for compatibility and fingerprint context. Confirmed live in the Peugeot 107 raw Pelican report with 1 positive sample. Low sample count; keep under observation in future logs."
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "cmd": {
+        "01": "21"
+      },
+      "freq": 0.2,
+      "signals": [
+        {
+          "id": "DISTANCE_WITH_MIL_ON",
+          "path": "DTCs",
+          "fmt": {
+            "bix": 0,
+            "len": 16,
+            "unit": "kilometers",
+            "min": 0,
+            "max": 65535
+          },
+          "name": "Distance with MIL on",
+          "description": "[CONFIRMED_LIVE] Distance traveled with MIL/check-engine light on. Useful diagnostic context. Confirmed live in the Peugeot 107 raw Pelican report with 4 positive samples. Low sample count; keep under observation in future logs."
+        }
+      ]
+    }
+  ]
 }
